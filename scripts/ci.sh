@@ -1,8 +1,8 @@
 #!/bin/bash
 # This script allows to build all the Rust projects contained in this monorepo
 # Usage:
-# $ sh .github/workflows/ci.sh
-# $ sh .github/workflows/ci.sh # with verbosity
+# $ ./scripts/ci.sh
+# $ ./scripts/ci.sh --verbose # with verbosity
 
 # Run cargo build command for every path in a list
 build() {

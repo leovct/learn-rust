@@ -12,4 +12,4 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build projects
-        run: sh ./github/workflows/ci.sh
+        run: sh ./scripts/ci.sh
