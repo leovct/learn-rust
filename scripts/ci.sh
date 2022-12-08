@@ -8,7 +8,9 @@
 build() {
   while read path; do
     echo "Project: $path"
-		if [[ "${args[0]}" == "--verbose" || "${args[0]}" == "-v" ]]; then
+		arg=${args[0]}
+		if [[ "$arg" == "--verbose" || "$arg" == "-v" ]]; then
+			echo verbose
 			cargo build --verbose --manifest-path $path
 		else
 			cargo build --manifest-path $path
@@ -16,7 +18,7 @@ build() {
   done
 }
 
-args=("$@")
+args="$@"
 
 # Find all the directories containing a Cargo.toml file
 find . -name 'Cargo.toml' | sort | build
