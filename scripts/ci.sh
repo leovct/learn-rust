@@ -8,9 +8,8 @@
 build() {
   while read path; do
     echo "Project: $path"
-		arg=${args[0]}
+		arg="${args[0]}"
 		if [[ "$arg" == "--verbose" || "$arg" == "-v" ]]; then
-			echo verbose
 			cargo build --verbose --manifest-path $path
 		else
 			cargo build --manifest-path $path
