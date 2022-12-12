@@ -2,21 +2,26 @@ use rand::Rng;
 use std::cmp::Ordering;
 use std::io;
 
+const MAX_GUESS: u32 = 100;
+
+fn generate_secret(max: u32) -> u32 {
+	// Generate a secret number
+	// We use the rand crate, thus we need to add the following line to Cargo.toml
+	// --- Cargo.toml
+	// ...
+	// [dependencies]
+	// rand = "0.8.3"
+	//
+	// Then run cargo build to update the dependencies
+	// And import the new crate (see at the top): use rand::Rng;
+	let mut rng = rand::thread_rng();
+	return rng.gen_range(1..=max);
+}
+
 fn main() {
     println!("Guess the number!");
 
-		// Generate a secret number
-		// We use the rand crate, thus we need to add the following line to Cargo.toml
-		// --- Cargo.toml
-		// ...
-		// [dependencies]
-		// rand = "0.8.3"
-		//
-		// Then run cargo build to update the dependencies
-		// And import the new crate (see at the top): use rand::Rng;
-		let mut rng = rand::thread_rng();
-		let secret_number = rng.gen_range(1..=100);
-
+		let secret_number = generate_secret(MAX_GUESS);
 		let mut trials = 0;
 
 		// Infinite loop until the player finds the number
