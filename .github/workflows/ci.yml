@@ -31,5 +31,9 @@ jobs:
             target/            
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
+      - name: List projects to build
+        run: |
+          find . -name 'Cargo.toml' | sort
+          echo total: $(find . -name 'Cargo.toml' | wc -l) projects
       - name: Build projects
         run: sh .github/workflows/ci.sh
